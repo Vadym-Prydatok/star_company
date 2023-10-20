@@ -7,6 +7,7 @@
 .page {
   font-family: 'OpenSansBold', sans-serif;
   background: url(/img/mainBG.png) center/cover no-repeat;
+  background-color: #161212;
   color: #fff;
   font-size: 11px;
   max-width: 960px;

@@ -95,6 +95,7 @@ select option {
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-self: flex-start;
   gap: 12px;
   width: 120px;
   height: 40px;
