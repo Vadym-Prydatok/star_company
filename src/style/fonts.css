@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'OpenSans';
+  src: url(../assets/fonts/OpenSans-Regular.ttf);
+  font-weight: 400;
+  font-size: normal;
+}
+
+@font-face {
+  font-family: 'OpenSansBold';
+  src: url(../assets/fonts/OpenSans-Bold.ttf);
+  font-weight: 700;
+  font-size: normal;
+}
+
+@font-face {
+  font-family: 'ProximaNovaLight';
+  src: url(../assets/fonts/ProximaNova-Light.ttf);
+  font-weight: 300;
+  font-size: normal;
+}
+
+@font-face {
+  font-family: 'ProximaNovaBold';
+  src: url(../assets/fonts/ProximaNova-Bold.ttf);
+  font-weight: 800;
+  font-size: normal;
+}

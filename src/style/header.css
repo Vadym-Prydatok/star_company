@@ -1,0 +1,34 @@
+header {
+  margin: 0 auto;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+}
+
+@media (min-width: 768px) {
+  .logo {
+    align-self: flex-start;
+  }
+
+  header {
+    padding-top: 40px;
+  }
+
+  .header__inner {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}

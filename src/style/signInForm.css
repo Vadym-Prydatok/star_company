@@ -1,0 +1,66 @@
+.signInForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.signInForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.email-error {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 35px;
+  background-color: red;
+  border-radius: 5px;
+}
+
+.password-error {
+  display: none;
+  text-decoration: underline;
+}
+
+.signInForm button[type="submit"] {
+  height: 40px;
+  width: 80px;
+  border-radius: 5px;
+  background-color: #497aea;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.signInForm button[type="submit"]:hover {
+  -webkit-box-shadow: 0px 0px 19px 1px rgba(79,117,185,0.56);
+  -moz-box-shadow: 0px 0px 19px 1px rgba(79,117,185,0.56);
+  box-shadow: 0px 0px 19px 1px rgba(79,117,185,0.56);
+}
+
+.signInForm__input {
+  padding: 14px;
+  width: 200px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #000;
+}
+
+.signInForm__input::placeholder {
+  font-size: 14px;
+  font-weight: 700;
+  color: #6e747c;
+}
+
+
+@media (min-width: 768px) {
+  .signInForm {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+}
