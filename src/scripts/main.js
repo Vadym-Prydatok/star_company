@@ -23,7 +23,7 @@ const listOfInputs = [...signUpForm.children].slice(
 );
 const listOfDots = [...dotsList.children];
 
-let countStep = 0;
+let step = 0;
 
 const titleInput = {
   0: "Who are you",
@@ -38,8 +38,9 @@ const notice = {
   1: "",
   2: "E.g.: New Roads or 70760 We don’t use postal addresses to contact members directly!",
   3: "",
-  4: 'By clicking the button above you agree to our <a href="#">Terms of Use</a>' +
-  '<a href="#">Privacy Policy</a> including use of cookies and to receive newsletters, account updates and offers sent by StarCompany.'
+  4:
+    'By clicking the button above you agree to our <a href="#">Terms of Use</a>' +
+    '<a href="#">Privacy Policy</a> including use of cookies and to receive newsletters, account updates and offers sent by StarCompany.',
 };
 
 function isValidEmail(email) {
@@ -67,10 +68,10 @@ signInForm.addEventListener("submit", function (event) {
   }
 });
 
-const activeStep = (step, array) => {
+const activeStep = (countOfStep, array) => {
   array.forEach((el) => el.classList.remove("active-step"));
 
-  for (let i = 0; i <= step; i++) {
+  for (let i = 0; i <= countOfStep; i++) {
     array[i].classList.add("active-step");
   }
 };
@@ -78,15 +79,15 @@ const activeStep = (step, array) => {
 const finalStep = () => {
   nextButton.classList.add("startButton");
   nextButton.innerHTML =
-    'Start now <img src="/img/svg/start.svg" alt="arrow" />';
+    'Start now <img src="/star_company/img/svg/start.svg" alt="arrow" />';
 };
 
 nextButton.addEventListener("click", () => {
-  if (countStep === 5) {
+  if (step === 5) {
     return;
   }
 
-  if (countStep === 2) {
+  if (step === 2) {
     if (locationSignUp.value.trim().length <= 3) {
       infoOrErrorNotice.textContent = "Please enter a valid address";
       infoOrErrorNotice.classList.add("hasError");
@@ -94,7 +95,7 @@ nextButton.addEventListener("click", () => {
     }
   }
 
-  if (countStep === 3) {
+  if (step === 3) {
     if (!isValidEmail(emailSignUp.value)) {
       infoOrErrorNotice.textContent = "Please enter a valid email addres";
       infoOrErrorNotice.classList.add("hasError");
@@ -104,7 +105,7 @@ nextButton.addEventListener("click", () => {
     finalStep();
   }
 
-  if (countStep === 4) {
+  if (step === 4) {
     if (passwordSignUp.value.trim().length <= 4) {
       infoOrErrorNotice.textContent = "Please enter a valid password";
       infoOrErrorNotice.classList.add("hasError");
@@ -115,42 +116,50 @@ nextButton.addEventListener("click", () => {
     return;
   }
 
-  countStep++;
-  activeStep(countStep, listOfDots);
+  step++;
+  activeStep(step, listOfDots);
 
-  countStep > 4 ? infoOrErrorNotice.textContent = notice[countStep] : infoOrErrorNotice.innerHTML = notice[countStep]
-  
-  signUpFormTitle.textContent = titleInput[countStep];
+  step > 4
+    ? (infoOrErrorNotice.textContent = notice[step])
+    : (infoOrErrorNotice.innerHTML = notice[step]);
+
+  signUpFormTitle.textContent = titleInput[step];
   listOfInputs.forEach((el) => el.classList.remove("active"));
-  listOfInputs[countStep].classList.add("active");
+  listOfInputs[step].classList.add("active");
 });
 
 backButton.addEventListener("click", () => {
-  if (countStep === 0) {
+  if (step === 0) {
     return;
+  }
+
+  if (step === 4) {
+    nextButton.classList.remove("startButton");
+    nextButton.innerHTML =
+    'Next step <img src="/star_company/img/svg/arrow_hover.svg" alt="arrow" />';
   }
 
   infoOrErrorNotice.classList.remove("hasError");
 
-  countStep--;
-  activeStep(countStep, listOfDots);
-  infoOrErrorNotice.textContent = notice[countStep];
-  signUpFormTitle.textContent = titleInput[countStep];
+  step--;
+  activeStep(step, listOfDots);
+  infoOrErrorNotice.textContent = notice[step];
+  signUpFormTitle.textContent = titleInput[step];
   listOfInputs.forEach((el) => el.classList.remove("active"));
-  listOfInputs[countStep].classList.add("active");
+  listOfInputs[step].classList.add("active");
 });
 
 emailSignUp.addEventListener("focus", () => {
   infoOrErrorNotice.classList.remove("hasError");
-  infoOrErrorNotice.textContent = notice[countStep];
+  infoOrErrorNotice.textContent = notice[step];
 });
 
 locationSignUp.addEventListener("focus", () => {
   infoOrErrorNotice.classList.remove("hasError");
-  infoOrErrorNotice.textContent = notice[countStep];
+  infoOrErrorNotice.textContent = notice[step];
 });
 
 passwordSignUp.addEventListener("focus", () => {
   infoOrErrorNotice.classList.remove("hasError");
-  infoOrErrorNotice.textContent = notice[countStep];
+  infoOrErrorNotice.textContent = notice[step];
 });
